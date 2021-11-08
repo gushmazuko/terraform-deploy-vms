@@ -1,0 +1,54 @@
+#cloud-config
+manage_etc_hosts: true
+preserve_hostname: false
+# prefer_fqdn_over_hostname: false
+# hostname: ${hostname}
+fqdn: ${hostname}.${domain}
+timezone: ${timezone}
+disable_root: false
+ssh_authorized_keys:
+  - ${ssh_authorized_key_1}
+  - ${ssh_authorized_key_2}
+# packages and update
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+packages:
+  - qemu-guest-agent
+  - spice-vdagent
+  - gnupg-agent
+  - apt-transport-https
+  - aptitude
+  - python3
+  - python3-apt
+  - ca-certificates
+  - curl
+  - zsh
+  - git
+# other features
+runcmd:
+  - sed -i -e '/Port\ /s/^.*$/Port ${ssh_port}/' /etc/ssh/sshd_config
+  - sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin prohibit-password/' -e '/^#PermitRootLogin/s/^.*$/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
+  - sed -i -e "s/# ${locale}.*/${locale} UTF-8/" /etc/locale.gen && dpkg-reconfigure --frontend=noninteractive locales && update-locale LANG=${locale}
+# set default user
+system_info:
+  default_user:
+    name: ${ciuser}
+    passwd: ${cipass}
+    lock_passwd: false
+    ssh_pwauth: no
+    # ssh_authorized_keys:
+    #   - {ssh_authorized_key_1}
+    #   - {ssh_authorized_key_2}
+    shell: /bin/bash
+    gecos: Admin User
+    groups: [adm, audio, cdrom, dialout, video, plugdev, dip, netdev, sudo]
+    sudo: ALL=(ALL) NOPASSWD:ALL
+# reboot at the end
+power_state:
+  delay: now
+  mode: reboot
+  message: Bye Bye! I need to reboot myself!
+  timeout: 30
+  condition: True
+final_message: "The system is finally up, after $UPTIME seconds"

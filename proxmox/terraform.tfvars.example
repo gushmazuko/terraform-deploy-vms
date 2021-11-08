@@ -1,0 +1,40 @@
+vm_count            = 1
+# pm_ip               = ""
+# target_node         = "pve"
+# pm_user             = "terraform@pve"
+# pm_password         = ""
+/* Proxmox SSH Port */
+pm_port             = 22
+# pm_private_key      = "~/.ssh/id_ed25519_my_key"
+vm_name             = "debian-10-vm"
+vm_desc             = "Dployed via Terraform"
+vm_template         = "ci-debian-11-tpl"
+vm_cpu              = "host"
+vm_socket           = 1
+vm_cores            = 4
+vm_numa             = true
+vm_memory           = 2048
+vm_balloon          = 0
+vm_storage          = "local-zfs"
+vm_system_disk_size = "30G"
+vm_bridge           = "vmbr0"
+vm_subnet           = "dhcp"
+/* Begin - Static IP Config */
+# vm_prefix           = 24
+# vm_hostnum          = 1
+# vm_gateway          =
+# vm_dns              =
+# vm_dns1             =
+# vm_dns2             =
+# vm_searchdomain     =
+/* End - Static IP Config */
+vm_domain           = "network.lan"
+vm_timezone         = "Europe/Berlin"
+vm_locales          = "en_US.UTF-8"
+vm_ciuser           = "sysadmin"
+# vm_cipass           = ""
+# vm_ssh_authorized_key_1 = ""
+# vm_ssh_authorized_key_2 =
+
+/* Set custom SSH port inside VM */
+# vm_ssh_port         = 22
