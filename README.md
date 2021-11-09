@@ -1,7 +1,7 @@
 # Terraform Deploy Virtual Machines
 
 
-Find **README.md** in *each* role subfolder:
+Find **README.md** in *each* provider subfolder:
 ```bash
 .
 ├── LICENSE
@@ -19,4 +19,4 @@ Find **README.md** in *each* role subfolder:
 ```
 
 List of Providers:
-- [Proxmox VE](./proxmox/README.md)
+- [Proxmox VE](./proxmox/)
