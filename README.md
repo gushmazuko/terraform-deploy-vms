@@ -1,7 +1,7 @@
 # Terraform Deploy Virtual Machines
 
 
-Find **README.md** in *each* provider subfolder:
+Find `README.md` in *each* provider subfolder:
 ```bash
 .
 ├── LICENSE
