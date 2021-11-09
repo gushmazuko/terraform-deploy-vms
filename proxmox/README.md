@@ -1,8 +1,9 @@
 # Deploy a VM to Proxmox with Terraform
 
+Deploy your Infrastructure as Code via Terraform & Cloud-Init
 
 ## Requirements
-- Cloud Init VM Template on Proxmox
+- Cloud Init enabled VM Template on Proxmox
 
 
 ## Create Cloud-Init VM Template
