@@ -17,13 +17,13 @@ vm_memory           = 2048
 vm_balloon          = 0
 vm_storage          = "local-zfs"
 vm_system_disk_size = "30G"
+# vm_data_disk_size  = ""
 vm_bridge           = "vmbr0"
 vm_subnet           = "dhcp"
 /* Begin - Static IP Config */
 # vm_prefix           = 24
 # vm_hostnum          = 1
 # vm_gateway          =
-# vm_dns              =
 # vm_dns1             =
 # vm_dns2             =
 # vm_searchdomain     =
