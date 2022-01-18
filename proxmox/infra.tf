@@ -53,7 +53,7 @@ resource "proxmox_vm_qemu" "proxmox_vm" {
   onboot                  = true
   agent                   = 1
   define_connection_info  = true
-  vmid                    = 0
+  #vmid                    = 0
   desc                    = var.vm_desc
   # cicustom                = "user=local:snippets/user_data_vm-${count.index}.yaml"
   cicustom                = (var.vm_count > 1 ? "user=local:snippets/user_data_${var.vm_name}-0${count.index + 1}.yaml" : "user=local:snippets/user_data_${var.vm_name}.yaml")
@@ -98,5 +98,8 @@ resource "proxmox_vm_qemu" "proxmox_vm" {
     ignore_changes  = [
       network
     ]
+  }
+  timeouts {
+    create = "10m"
   }
 }
